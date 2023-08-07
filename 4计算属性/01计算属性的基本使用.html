@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{fristName + ' ' + lastName}}</h2>
+			<h2>{{fristName}} {{lastName}}</h2>
+			<h2>{{getfullName()}}</h2>
+			<!-- 想让他显示多次时，这样写会很麻烦因此我们可以使用计算属性computed 它里面是一个函数，我们尽量使用属性的方式命名，他使用时是当属性使用的不用加小括号-->
+			<h2>{{fullName}}</h2>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					fristName:'han',
+					lastName:'miao'
+				},
+				computed:{//当我们某个数据需要展示时，但这个数据要经过一系列的变化在使用要使用计算属性
+					fullName:function(){
+						return this.fristName + ' ' + this.lastName
+					}
+				},
+				methods:{
+					getfullName:function(){
+						return this.fristName + ' ' + this.lastName
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

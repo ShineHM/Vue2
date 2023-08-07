@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+    /* 此时项目需要两个网络请求都完成才能继续，这时要判断两个个请求都拿到了,可以使用promis.all*/
+
+    /* let isresult1 = false
+    let isresult2 = false
+    //请求一：
+    $ajax({
+      url:'',
+      success:function(){
+        console.log('结果1');
+        isresult1 = true;
+        handleresult()
+      }
+    })
+    //请求二
+    $ajax({
+      url:'',
+      success:function(){
+        console.log('结果2');
+        isresult2 = true;
+        handleresult()
+      }
+    })
+    function handleresult(){
+      //定义两个变量来记录状态并判断是否完成了请求
+      if(isresult2 && isresult1){
+        //
+      }
+    } */
+
+
+    /* Promise.all([
+      new Promise((resolve,reject) => {
+        //会自动判断这两个网络请求有没有都完成，如果都完成就会执行then函数
+        $ajax({//
+          url:'url1',
+          success:function(data){//data表示拿到的请求结果
+            resolve(data)
+          }
+        })
+        }),
+        new Promise((resolve,reject) => {
+        $ajax({
+          url:'url',
+          success:function(data){//data表示拿到的请求结果
+            resolve(data)
+          }
+        })
+      })
+    ]).then(results => {//results是数组
+      result[0]//表示第一次请求结果
+      result[1]//表示第二次请求结果
+    }) */
+
+
+    /* 使用promise.all和setTimerout模拟 */
+    Promise.all([
+      new Promise((resolve,reject) => {
+        setTimeout(() => {
+          resolve({name:'han',age:18})
+        },2000)
+      }),
+      new Promise((resolve,reject) => {
+        setTimeout(() => {
+          resolve({name:'miao',age:20})
+        },1000)
+      })
+    ]).then(results => {
+      console.log(results);
+    })
+  </script>
+</body>
+</html>

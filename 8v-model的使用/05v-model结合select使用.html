@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+			<!-- 单选 -->
+			<select name="a" v-model="fruit">
+				<option value="苹果">苹果</option>
+				<option value="葡萄">葡萄</option>
+				<option value="香蕉">香蕉</option>
+				<option value="榴莲">榴莲</option>
+			</select>
+			<h4>您选择的水果是：{{fruit}}</h4><br>
+			
+			<!-- 拉选多个 或者按着ctrl多选-->
+			<select name="b" v-model="fruits" multiple>
+				<option value="苹果">苹果</option>
+				<option value="葡萄">葡萄</option>
+				<option value="香蕉">香蕉</option>
+				<option value="榴莲">榴莲</option>
+			</select>
+			<h4>您选择的水果是：{{fruits}}</h4>
+			
+			<!-- 值绑定 -->
+			<label v-for="(item,index) in fruitsList" >
+				<input type="checkbox" :value="item" :id="index" v-model="hobbies"/>{{item}}
+			</label>
+			<h4>您的选择是：{{hobbies}}</h4>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					fruit:'香蕉',
+					fruits:[],
+					hobbies:[],
+					fruitsList:['蓝球','足球','羽毛球','乒乓球']
+				}
+			})
+		</script>
+	</body>
+</html>

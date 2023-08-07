@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn ref="a"></cpn>
+			<button type="button" @click="btnClick">按钮</button>
+		</div>
+		<template id="cpn">
+			<div >
+				<h2>我是子组件</h2>
+			</div>
+		</template>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					
+				},
+				methods:{
+					btnClick(){
+						/* 1.使用$childer使父组件访问子组件的方法 (使用较少，因为使用下标不够灵活)*/
+						console.log(this.$children);//[VueComponent]组件有几个组件实例就会打印几个组件
+						/* this.$children[0].showMessage();//showMessage
+						console.log(this.$children[0].name); */
+						
+						/* for(let i of this.$children){
+							console.log(i.name);//我是子组件的name
+							i.showMessage(); */
+							
+						/* 2.使用$refs (用的很多) 默认为空的对象，必须在组件实例加 ref="xxx"*/
+						console.log(this.$refs);//为空对象
+						console.log(this.$refs.a);//VueComponent 组件
+						}
+					},
+				components:{
+					cpn:{
+						template:'#cpn',
+						data(){
+							return{
+								name:'我是子组件的name'
+							}
+						},
+						methods:{
+							showMessage(){
+								console.log('showMessage');
+							}
+						}
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--1.事件调用的方法没有参数可以省略小括号 -->
+			<!-- <button type="button" @click="btn1click()">按钮1</button>
+			<button type="button" @click="btn1click">按钮1</button> -->
+			
+			<!-- 2.在事件定义时写方法时省略了小括号 -->
+			<!-- 这时没有传参数不会报错，会返回undefined -->
+			<button type="button" @click="btn2click()">按钮2</button>
+			<!-- 传递了参数会返回参数 -->
+			<button type="button" @click="btn2click(3)">按钮3</button>
+			<!-- 这时需要参数但省略了括号系统不会报错，会默认将浏览器生产的event事件对象最为参数传入-->
+			<button type="button" @click="btn2click">按钮4</button>
+			
+			<!-- 3.方法定义时，我们需要event对象，同时有需要其他参数 -->
+			<!-- 在调用方法是手动获取到浏览器参数的event对象：$event -->
+			<button type="button" @click="btn3click(5,$event)">按钮5</button>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					message:'hello'
+				},
+				methods:{
+					btn1click(){
+						console.log('1');
+					},
+					btn2click(a){
+						console.log('---',a);
+					},
+					btn3click(b,event){
+						console.log('+++',b,event);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

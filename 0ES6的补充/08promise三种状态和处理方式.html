@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+    /* promise有三种状态：pending：等待状态，fulfill：满足状态，reject：拒绝状态 */
+    new Promise((resolve,reject) => {
+      setTimeout(() => {
+        resolve('hello')
+        reject('err')
+      })
+    }).then(res => {//表示请求成功调用这个函数
+      console.log(res);//hello
+    },err => {//请求拒绝时调用这个函数。和catch写法原理一样
+      console.log(err);//err
+    })
+  </script>
+</body>
+</html>

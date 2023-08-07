@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 组件实例 -->
+			<Cpn></Cpn>
+			<Cpn></Cpn>
+		</div>
+		<template id="cpn">
+			<div>
+				<h2>当前计数：{{counter}}</h2>
+				<button type="button" @click="add">+</button>
+				<button type="button" @click="sub">-</button>
+			</div>
+		</template>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('Cpn',{
+				template:'#cpn',
+				/* 组件有自己的data，而且必须是函数和返回值 
+				为什么必须是函数？因为建立的组件实例每次调用函数，都各自存放自己的内存地址，不会互相影响*/
+				data(){
+					return{
+						counter:0
+					}
+				},
+				methods:{
+					add(){
+						this.counter++
+					},
+					sub(){
+						this.counter--
+					}
+				}
+			})
+			const app = new Vue({
+				el:'#app',
+				data:{}
+			})
+		</script>
+	</body>
+</html>

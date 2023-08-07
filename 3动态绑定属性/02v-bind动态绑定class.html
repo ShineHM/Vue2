@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.active{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 对象语法绑定class 用的多-->
+			<!-- <h2 v-bind:class="{active:true,line:false}">{{message}}</h2> -->
+			<h2 v-bind:class="{active:isactive,line:isline}">{{message}}</h2>
+			<h2 class="title" v-bind:class="{active:isactive,line:isline}">{{message}}</h2><!-- 这时会将三个class合并显示三个，但是title删除会麻烦，通常不能删除的就放在前面 -->
+			<h2 class="title" :class="getclass()">{{message}}</h2>
+			<button type="button" v-on:click="btnclick">点击切换颜色</button>
+		</div>
+		<script src="../js/vue.js"></script>
+			<script type="text/javascript">
+				const app = new Vue({
+				el:'#app',
+				data:{
+					message:'hello',
+					active:'active',
+					isactive:true,
+					isline:false
+				}, 
+				methods:{
+					btnclick:function(){
+						this.isactive = !this.isactive
+					},
+					getclass:function(){
+						return {active:this.isactive,line:this.isline}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

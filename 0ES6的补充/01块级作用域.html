@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button">按钮1</button>
+		<button type="button">按钮2</button>
+		<button type="button">按钮3</button>
+		<button type="button">按钮4</button>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/* 使用js在if和for没有块级作用域 这样就会引起一些问题*/
+			var name = 'han';
+			if(true){
+				var name = 'miao'
+			}
+			name = 'hello'
+			console.log(name);//hello if中的代码修改了全局的name,if中没有块级作用域，全局的name也可以修改if中的代码，
+			
+			var btns = document.getElementsByTagName('button');
+			for(var i = 0; i < btns.length;i++){
+				//btns[i].onclick = function(){
+					/* 会显示点击了第四个，因为for先执行，执行完了之后才输出以前使用闭包解决因为函数有作用域 */
+					//console.log('我点击了第' + i + '个button');//我点击了第4个button
+				//}
+				/* (function(i){
+					btns[i].onclick = function(){
+						console.log('我点击了第' + i + '个button');
+						}
+				})(i) */
+			}
+			// 使用ES6中的let就可以解决
+			for(let i = 0; i < btns.length;i++){
+				btns[i].onclick = function(){
+					console.log('我点击了第' + i + '个button');
+					}
+				}
+		</script>
+	</body>
+</html>

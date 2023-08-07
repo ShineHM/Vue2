@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h2 v-text="message"></h2>
+			<h2 v-text="message">你好</h2><!-- 他不是很灵活会使用message覆盖你好 -->
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+			el:'#app',
+			data:{
+				message:'hello',
+				url:'<a href = "http://www.baidu.com">百度一下</a>'
+			},
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 使用methods methods代码会执行四次性能没有computed好-->
+			<h2>{{gettotalName()}}</h2>
+			<h2>{{gettotalName()}}</h2>
+			<h2>{{gettotalName()}}</h2>
+			<h2>{{gettotalName()}}</h2>
+			<!-- 使用计算属性computed 代码会缓存只会执行一次在控制台进行数据的
+			修改时app.fristName = 'hello'这时会修改但computed代码也只会执行一次-->
+			<h2>{{totalName}}</h2>
+			<h2>{{totalName}}</h2>
+			<h2>{{totalName}}</h2>
+			<h2>{{totalName}}</h2>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					fristName:'han',
+					lastName:'miao'
+				},
+				computed:{
+					totalName:function(){
+						console.log('totalName');//会执行一次
+						return this.fristName + ' ' + this.lastName
+					}
+				},
+				methods:{
+					gettotalName:function(){
+						console.log('gettotalName');//会打印四次
+						return this.fristName + ' ' + this.lastName
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

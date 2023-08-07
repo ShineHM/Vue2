@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div @click="divClick">
+				aaa
+				<!-- .stop取消冒泡，相当于调用event.stopPropagation() -->
+				<button @click.stop="btn1Click">按钮1</button>
+			</div>
+			<br>
+			<form action="baidu" method="post">
+				<!-- .prevent取消默认行为，相当于调用event.preventDefault(),点击提交按钮，表单会跳转页面这时默认行为 -->
+				<input type="submit" value="提交" @click.prevent="subClick"/>
+			</form>
+			<br>
+			<!-- @keyup键盘抬起事件 @keyup.enter键盘enter键被按下又抬起事件-->
+			<input type="text" value="" @keyup.enter="inpClick"/>
+			<!-- .once事件之后触发一次 -->
+			<button @click.once="btn2Click">按钮2</button>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					message:'hello'
+				},
+				methods:{
+					btn1Click(){
+						console.log('btn1Click');
+					},
+					divClick(){
+						console.log('divClick');
+					},
+					subClick(){
+						console.log('subClick');
+					},
+					inpClick(){
+						console.log('inpClick');
+					},
+					btn2Click(){
+						console.log('btn2Click');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

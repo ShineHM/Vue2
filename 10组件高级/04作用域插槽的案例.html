@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 作用域插槽：父组件替换插槽的标签，但是内容由子组件来提供 -->
+			<cpn></cpn>
+			<cpn v-slot:default="slot">
+				<!--vue2.5以前的版本需要有template现在可以省略   <template v-slot:default="slot">
+					<span v-for="items in slot.data">{{items}} -</span>
+				</template> -->
+				
+				<!-- 这样写最后面会有一个‘-’ -->
+				<!-- <span v-for="items in slot.data">{{items}} -</span> -->
+				
+				<!-- 我们使用join（）函数 -->
+				<span>{{slot.data.join(' - ')}}</span>
+				
+			</cpn>
+			<cpn v-slot:default="slot">
+				<span>{{slot.data.join(' * ')}}</span>
+			</cpn> 
+		</div>
+		<template id="cpn">
+			<div>
+				<slot :data="pLanguages">
+					<ul>
+						<li v-for="items in pLanguages">{{items}}</li>
+					</ul>
+				</slot>
+			</div>
+		</template>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					message:'hello'
+				},
+				components:{
+					cpn:{
+						template:'#cpn',
+						data(){
+							return {
+								pLanguages:['js','c#','java','python','go','php']
+							}
+						},
+						created(){
+							this.pLanguages.join('-')
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

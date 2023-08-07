@@ -1,0 +1,55 @@
+<!-- promise是异步编程的解决方案比较优雅 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+    /* 异步操作 */
+    /* setTimeout(() => {
+      console.log('hello world');
+    },1000) */
+
+    /* promise是异步编程的解决方案比较优雅 */
+   /* 链式编程
+    new Promise((resolve,reject) => {
+      setTimeout(() => {
+        resolve()
+      },1000)
+    }).then(() => {
+      console.log('hello world');
+      console.log('hello world');
+      return new Promise((resolve,reject) => {
+        setTimeout(() =>{
+          resolve()
+        },1000)
+      })
+      }).then(() => {
+        console.log('hello promise');
+        console.log('hello promise');
+        return new Promise((resolve,reject) => {
+          setTimeout(() => {
+            resolve()
+          },1000)
+        })
+        }).then(() => {
+          console.log('hello ES6');
+          console.log('hello ES6');
+        }) */
+
+        new Promise((resolve,reject) => {
+          /* 过程：new->构造函数（1.保存了一些状态信息2.执行传入的函数）
+            在执行传入的回调函数时，会传入两个参数，resolve，reject本身也是函数 */
+          setTimeout(() => {
+            reject()//调用这个函数表示请求错误不会执行then函数，但执行catch函数
+          })
+        }).then(() => {
+          console.log('hello');
+        }).catch(() => {
+          console.log('error message');
+        })
+  </script>
+</body>
+</html>

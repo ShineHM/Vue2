@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 为什么要加key这个，因为如果不加key，vue在渲染dom时会经过虚拟dom进行复用input文本框
+			 会出现在文本框输入内容时，用户想切换邮箱点击切换时文本框的内容如果没有点击之前删除就会在
+			 切换完邮箱时还显示，用户体验不好，使用key可以做个标识表示这两个input不一样，Vue在渲染时就会完全替换-->
+			<span v-if="isUser">用户账号：<input type="text" placeholder="用户账号" key="username" /></span>
+			<span v-else>用户邮箱：<input type="text"placeholder="用户邮箱" key="email"/></span>
+			<button @click="isUser = !isUser">切换类型</button>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					isUser:true,
+				}
+			})
+		</script>
+	</body>
+</html>

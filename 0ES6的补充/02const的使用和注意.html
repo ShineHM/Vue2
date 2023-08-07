@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 在ES6开发中，优先使用const，只有需要改变某个标识符的时候才使用let -->
+		<script type="text/javascript">
+			//1.const定义标识符的值不可再改变
+			const name = 'hello';
+			//name = 'ni';//错误
+			
+			//2.使用const定义时必须赋值
+			//const age;//错误
+			//3.常量的含义是指向的对象不能修改，但是可以改变对象内部的属性
+			const obj = {
+				name:'miao',
+				age:20
+			}
+			//obj = {};//错误
+			//属性可以修改
+			obj.name = 'han';
+			console.log(obj.name);//han
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="item in names" :key="item">{{item}}</li><br>
+				<li v-for="(item,index) in names">{{index+1}}-{{item}}</li><br>
+				
+				<li v-for="value in info">{{value}}</li><br>
+				<li v-for="(value,key) in info">{{key}}-{{value}}</li><br>
+				<li v-for="(value,key,index) in info">{{index+1}}-{{key}}-{{value}}</li>
+			</ul>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					/* 数组的这些方法是响应式的：push() pop() shift() unshift()和Vue.set可以变为响应式(要修改的对象，索引值，修改后的值)相似 splice() sort() reverse() */
+					names:['han','miao','ni','hao'],
+					info:{
+						name:'miao',
+						age:20,
+						sex:'女'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

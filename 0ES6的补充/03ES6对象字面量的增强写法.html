@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* const obj = {
+				name:'han',
+				age:20
+				sex:function(){
+					console.log('hello');
+				}
+				console.log(obj);
+			} */
+			//1.属性的增强写法
+			const name = 'han';
+			const age = 20;
+			const obj = {
+				name,
+				age
+			}
+			console.log(obj);//{name: "han", age: 20}
+			
+			/* const func = {
+				get:function(){
+					
+				},
+				set:function(){
+					
+				}
+			} */
+			//2.函数的增强写法
+			const func = {
+				get(){
+					
+				},
+				set(){
+					
+				}
+			}
+		</script>
+	</body>
+</html>

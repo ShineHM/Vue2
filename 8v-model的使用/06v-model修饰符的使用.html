@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-model.lazy可以让数据在失去焦点或者回车时才会更新 -->
+			<input type="text" value="message" v-model.lazy="message"/>
+			<h4>{{message}}</h4><br>
+			
+			<!-- 默认情况下，在输入框无论我们输入的是字母还是数字，都会当成字符串类型处理
+			 v-model.number可以让1输入框中输入的内容自动转换为数字类型-->
+			<input type="text" value="" v-model.number="type"/>
+			<h4>{{type}}-{{typeof type}}</h4><br>
+			
+			<!-- v-model.trim会去掉内容左右两边的空格 -->
+			<input type="text" value="" v-model.trim="name"/>
+			<h4>当前内容：---{{name}}---</h4>
+		</div>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			const app = new Vue({
+				el:'#app',
+				data:{
+					message:'hello',
+					type:'',
+					name:''
+				}
+			})
+		</script>
+	</body>
+</html>
